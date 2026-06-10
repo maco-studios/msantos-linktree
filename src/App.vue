@@ -13,8 +13,19 @@ type LinkItem = {
   label: string
   description: string
   href: string
+  analyticsEvent: string
   heroIcon?: Component
   brandIcon?: typeof faGoogle
+}
+
+declare global {
+  interface Window {
+    gtag?: (
+      command: 'event',
+      eventName: string,
+      parameters?: Record<string, string | number | boolean>,
+    ) => void
+  }
 }
 
 const companyPhone = '+5543996301677'
@@ -55,6 +66,7 @@ const bookingLink = {
   label: 'Mandar WhatsApp',
   description: 'Agende, tire duvidas e envie dados do veiculo',
   href: WhatsappUrl.toString(),
+  analyticsEvent: 'click_whatsapp_agendamento',
 }
 
 const links: LinkItem[] = [
@@ -62,12 +74,14 @@ const links: LinkItem[] = [
     label: 'Ligar agora',
     description: displayCompanyPhone,
     href: `tel:${companyPhone}`,
+    analyticsEvent: 'click_ligar_agora',
     heroIcon: PhoneIcon,
   },
   {
     label: 'Nos avalie no Google!',
     description: 'Conte como foi seu atendimento',
     href: googleReviewUrl,
+    analyticsEvent: 'click_avaliar_google',
     brandIcon: faGoogle,
   },
 ]
@@ -80,6 +94,13 @@ const pickAttentionTarget = () => {
   const availableTargets = attentionTargets.filter((target) => target !== activeAttentionTarget.value)
   const nextIndex = Math.floor(Math.random() * availableTargets.length)
   activeAttentionTarget.value = availableTargets[nextIndex] ?? attentionTargets[0]
+}
+
+const trackButtonClick = (eventName: string, label: string) => {
+  window.gtag?.('event', eventName, {
+    event_category: 'linktree_button',
+    event_label: label,
+  })
 }
 
 const services = [
@@ -214,6 +235,7 @@ onUnmounted(() => {
           :class="{ 'attention-wiggle': activeAttentionTarget === 'booking' }"
           target="_blank"
           rel="noreferrer"
+          @click="trackButtonClick(bookingLink.analyticsEvent, bookingLink.label)"
         >
           <span>
             <span class="block text-xl font-black">{{ bookingLink.label }}</span>
@@ -238,6 +260,7 @@ onUnmounted(() => {
             :class="{ 'attention-wiggle': activeAttentionTarget === `link-${index}` }"
             target="_blank"
             rel="noreferrer"
+            @click="trackButtonClick(link.analyticsEvent, link.label)"
           >
             <span
               class="grid h-10 w-10 shrink-0 place-items-center rounded border border-[#ff7200]/30 bg-[#111] text-xs font-black text-[#ff7200]"
@@ -267,6 +290,7 @@ onUnmounted(() => {
               :class="{ 'attention-wiggle': activeAttentionTarget === 'route' }"
               target="_blank"
               rel="noreferrer"
+              @click="trackButtonClick('click_como_chegar', 'Abrir rota')"
             >
               <span class="inline-flex items-center gap-1.5">
                 <MapPinIcon class="h-4 w-4" aria-hidden="true" />
