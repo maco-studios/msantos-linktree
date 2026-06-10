@@ -1,4 +1,4 @@
-![M. Santos](./public/profile.png)
+<img src="./public/profile.png" alt="M. Santos Linktree" width="100" />
 
 [![Vue](https://img.shields.io/badge/Vue-3-42b883.svg)](https://vuejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-8-646cff.svg)](https://vite.dev/)
@@ -6,7 +6,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38bdf8.svg)](https://tailwindcss.com/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222.svg)](https://pages.github.com/)
 
-# M. Santos Linktree
+# MSantos Linktree
 
 Linktree estatico para a **M. Santos - Mecanica Automotiva**, feito para uso na bio do Instagram.
 
