@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maco-studios.github.io/msantos-linktree/sitemap.xml

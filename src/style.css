@@ -1,0 +1,285 @@
+@import "@fontsource/montserrat/latin-400.css";
+@import "@fontsource/montserrat/latin-600.css";
+@import "@fontsource/montserrat/latin-700.css";
+@import "@fontsource/montserrat/latin-900.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Hudson NY";
+  src: url("./assets/fonts/HudsonNY.ttf") format("truetype");
+
+  font-display: swap;
+}
+
+:root {
+  font-family:
+    Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color-scheme: light;
+  background: #101010;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "Hudson NY", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.garage-shell {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 114, 0, 0.16), transparent 28rem),
+    #101010;
+}
+
+.garage-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.garage-shell::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23noise)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+}
+
+.linktree-card {
+  position: relative;
+  overflow: hidden;
+  animation: card-enter 520ms ease-out both;
+}
+
+.linktree-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.linktree-card::before,
+.noise-surface::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23noise)' opacity='0.65'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  mix-blend-mode: soft-light;
+}
+
+.noise-surface {
+  position: relative;
+  overflow: hidden;
+}
+
+.noise-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+.animate-rise {
+  animation: rise-in 520ms ease-out both;
+}
+
+.logo-mark {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.logo-mark:hover {
+  transform: rotate(-2deg) scale(1.03);
+  box-shadow: 0 0 24px rgba(255, 114, 0, 0.22);
+}
+
+.cta-pulse {
+  position: relative;
+  overflow: hidden;
+  animation: cta-glow 2.8s ease-in-out infinite;
+}
+
+.cta-pulse::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 10%, rgba(255, 255, 255, 0.34) 45%, transparent 65%);
+  transform: translateX(-120%);
+  animation: cta-sheen 3.8s ease-in-out infinite;
+}
+
+.link-action {
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.link-action:hover {
+  transform: translateX(3px);
+}
+
+.attention-wiggle {
+  animation:
+    click-me-wiggle 760ms ease-in-out 0s 2,
+    attention-ring 1520ms ease-out 0s 1;
+  transform-origin: center;
+}
+
+.status-light {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 999px;
+}
+
+.status-light--open {
+  background: #22c55e;
+  animation: status-pulse-open 1.8s ease-in-out infinite;
+}
+
+.status-light--soon {
+  background: #ff7200;
+  animation: status-pulse-soon 1.8s ease-in-out infinite;
+}
+
+.status-light--closed {
+  background: #71717a;
+  box-shadow: 0 0 0 6px rgba(113, 113, 122, 0.14);
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 18px 38px rgba(255, 114, 0, 0.28);
+  }
+}
+
+@keyframes cta-sheen {
+  0%,
+  45% {
+    transform: translateX(-120%);
+  }
+
+  70%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes status-pulse-open {
+  0%,
+  100% {
+    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.12), 0 0 18px rgba(34, 197, 94, 0.55);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.2), 0 0 28px rgba(34, 197, 94, 0.75);
+  }
+}
+
+@keyframes status-pulse-soon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 5px rgba(255, 114, 0, 0.12), 0 0 18px rgba(255, 114, 0, 0.55);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 114, 0, 0.2), 0 0 28px rgba(255, 114, 0, 0.75);
+  }
+}
+
+@keyframes click-me-wiggle {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+
+  18% {
+    transform: translateX(-2px) rotate(-1deg) scale(1.01);
+  }
+
+  36% {
+    transform: translateX(3px) rotate(1deg) scale(1.015);
+  }
+
+  54% {
+    transform: translateX(-2px) rotate(-0.8deg) scale(1.01);
+  }
+
+  72% {
+    transform: translateX(2px) rotate(0.8deg) scale(1.01);
+  }
+}
+
+@keyframes attention-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 114, 0, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 0 12px rgba(255, 114, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
