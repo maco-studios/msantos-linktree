@@ -53,7 +53,7 @@ const formatPhone = (phone: string) => {
 const displayCompanyPhone = formatPhone(companyPhone)
 
 const profile = {
-  name: 'MSSantos',
+  name: 'MSantos',
   handle: '@m.santos.br',
   headline: 'Mecanica automotiva especializada em carros nacionais e importados. Qualidade e confianca para cuidar do seu veiculo.',
   location: 'Mecânica Automotiva',
@@ -183,7 +183,7 @@ onUnmounted(() => {
           <div
             class="logo-mark grid h-[6rem] w-[6rem] shrink-0 place-items-center overflow-hidden rounded-lg border border-[#ff7200]/50 bg-white"
           >
-            <img class="h-full w-full object-contain" :src="logoUrl" alt="Logo MSSantos Auto Service" />
+            <img class="h-full w-full object-contain" :src="logoUrl" alt="Logo MSantos Auto Service" />
           </div>
 
           <div class="min-w-0 flex-1">
